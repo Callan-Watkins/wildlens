@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy · WildLens</title>
+<meta name="description" content="How WildLens handles your photos, location and the finds you choose to share.">
+<link rel="icon" href="../assets/favicon.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="../"><img src="../assets/icon-256.png" alt="">WildLens</a>
+  <nav><a href="../privacy/" aria-current="page">Privacy</a><a href="../support/">Support</a><a class="hide-sm" href="../terms/">Terms</a></nav>
+</div></header>
+
+<main class="doc">
+  <h1>Privacy Policy</h1>
+  <p class="meta">Effective October 23, 2026</p>
+
+  <div class="summary">
+    <strong>The short version</strong>
+    WildLens has no ads, no tracking and no sign-in. Your collection lives on your iPhone. With the on-device identifier, your photo never leaves your phone to be identified. Nothing about you is shared with the WildLens team unless you turn on <em>Help improve WildLens</em>, and you can delete what you shared at any time.
+  </div>
+
+  <h2>What stays on your iPhone</h2>
+  <ul>
+    <li><strong>Your collection.</strong> Saved finds, their photos and details are stored only on your device. They aren't uploaded unless you turn on sharing (below).</li>
+    <li><strong>Your name</strong>, if you give one. It's shown on your collection and in things you share yourself. It leaves your phone only if you turn on sharing.</li>
+    <li><strong>The on-device identifier.</strong> Once downloaded, identification runs entirely on your iPhone, with no photo sent anywhere.</li>
+    <li><strong>A random install ID</strong>, created by the app. It isn't linked to your Apple ID, name, device identifiers or advertising ID, and is used to keep free services fair (for example, a daily limit on cloud identifications).</li>
+  </ul>
+
+  <h2>What's sent to identify and look things up</h2>
+  <p>To answer "what is it?" and "does it belong here?", WildLens contacts these services. Requests to Pl@ntNet, IUCN and web search go through WildLens's own server (a Cloudflare Worker) so that no third-party keys are in the app; the others are contacted directly.</p>
+  <table>
+    <tr><th>When</th><th>What's sent</th><th>To</th></tr>
+    <tr><td>Cloud plant identification (only without the on-device identifier, or when it's unsure about a plant; up to 5 a day)</td><td>Your photo, resized, with all location and camera metadata removed</td><td>Pl@ntNet, via the WildLens server</td></tr>
+    <tr><td>Range Check, "Recorded nearby" map, favoring local species</td><td>Your <strong>approximate</strong> location (rounded to about 10 km, or about 100 m if you choose Precise) and the species name. Never your photo.</td><td>iNaturalist and GBIF</td></tr>
+    <tr><td>Species details, reference photos, conservation status</td><td>The species name</td><td>iNaturalist, GBIF, IUCN Red List (via the WildLens server)</td></tr>
+    <tr><td>"Find fun facts" or "Ask about it", only when you tap</td><td>A search about the species. Your question and photo are processed on your iPhone by Apple Intelligence.</td><td>Tavily web search, via the WildLens server</td></tr>
+  </table>
+  <p>Location is used only when you allow it, and only for range lookups. It is never sent to identification services. The WildLens server caches answers for up to 30 days (keyed by a fingerprint of the photo or by species name) so the same question isn't asked twice, and keeps short-lived usage counters. It doesn't keep your location.</p>
+
+  <h2>If you turn on "Help improve WildLens"</h2>
+  <p>This is off unless you switch it on, during setup or in Settings. When it's on, each find <strong>you add to your collection</strong> is shared with the WildLens team:</p>
+  <ul>
+    <li>a small copy of the photo (about 640 pixels);</li>
+    <li>what it was identified as, the runner-up suggestions, which identifier answered and how confident it was;</li>
+    <li>the Range Check result;</li>
+    <li>where it was found, rounded as above;</li>
+    <li>when it was found, the app version, your install ID, and your name if you gave one.</li>
+  </ul>
+  <p>We use it to see where identification works and where it doesn't, to improve WildLens (including training and testing identification models), and to understand which species people find. It's stored with Supabase, our database provider, and isn't sold or used for advertising.</p>
+  <h3>Also help researchers</h3>
+  <p>If you also turn on <em>Also help researchers</em>, your shared finds (species, date, rounded location and your name if you gave one; not your photo) may be included in biodiversity datasets for scientists and conservation groups, such as GBIF. These records may become public and are hard to withdraw once published elsewhere.</p>
+  <h3>Deleting what you shared</h3>
+  <p>In Settings, tap <strong>Delete my shared data</strong>. Everything you shared is erased from our database right away and sharing turns off. Your collection on your iPhone isn't affected. Deleting the app without doing this leaves shared finds in place; contact us (below) and we'll remove them.</p>
+
+  <h2>Permissions</h2>
+  <ul>
+    <li><strong>Camera</strong>: to take the photo you want identified.</li>
+    <li><strong>Photos</strong>: only the photos you pick; WildLens can't see the rest of your library.</li>
+    <li><strong>Location (While Using)</strong>: optional, for Range Check. You can choose Off, Approximate or Precise in Settings.</li>
+  </ul>
+
+  <h2>What we don't do</h2>
+  <ul>
+    <li>No ads, no ad networks, no analytics or tracking SDKs, no cross-app tracking.</li>
+    <li>No selling or renting of data.</li>
+    <li>No accounts, passwords or email addresses.</li>
+    <li>No language model decides what something is or whether it's native or endangered; those come from identification models and scientific databases.</li>
+  </ul>
+
+  <h2>Service providers</h2>
+  <p>Cloudflare (hosts the WildLens server and the identifier download), Supabase (stores shared finds), Pl@ntNet, iNaturalist, GBIF, the IUCN Red List and Tavily (as described above), and Apple (Maps, location and on-device Apple Intelligence). Each handles data under its own privacy policy.</p>
+
+  <h2>Children</h2>
+  <p>WildLens is suitable for all ages and doesn't knowingly collect personal information from children. We suggest children leave <em>Help improve WildLens</em> off, or use it with a parent. If you believe a child has shared finds, contact us and we'll delete them.</p>
+
+  <h2>Retention</h2>
+  <p>Shared finds are kept until you delete them or we no longer need them to improve WildLens. Cached lookups on the WildLens server expire within 30 days. Usage counters expire within days.</p>
+
+  <h2>Changes</h2>
+  <p>If this policy changes, we'll update the date above and, for meaningful changes, explain them in the app before they apply to you.</p>
+
+  <h2>Contact</h2>
+  <p>Questions or deletion requests: see <a href="../support/">Support</a>.</p>
+</main>
+
+<footer><div class="wrap">
+  <div><a href="../privacy/">Privacy</a><a href="../support/">Support</a><a href="../terms/">Terms</a></div>
+  <div>© 2026 WildLens</div>
+</div></footer>
+</body>
+</html>

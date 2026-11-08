@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WildLens Gallery</title>
+<meta name="description" content="Plants, animals, insects and fungi found by WildLens explorers. Every photo is free to download under CC BY 4.0.">
+<meta property="og:title" content="WildLens Gallery">
+<meta property="og:description" content="Wild finds from WildLens explorers, free to download.">
+<meta property="og:image" content="../assets/shots/01.jpg">
+<link rel="icon" href="../assets/favicon.png?v=2">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png?v=2">
+<link rel="stylesheet" href="../assets/site.css?v=3">
+<style>
+  .g-hero { padding: 56px 0 18px; }
+  .g-hero h1 { font-size: clamp(46px, 7.5vw, 92px); line-height: .95; font-weight: 900; letter-spacing: -.035em; margin: 0 0 16px; }
+  .g-hero h1 mark { background: var(--signal); color: var(--on-signal); padding: 0 .1em; border-radius: .12em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .g-hero p { color: var(--muted); font-size: clamp(18px, 2vw, 21px); margin: 0; max-width: 46ch; }
+  .g-stats { display: flex; gap: 10px; flex-wrap: wrap; margin: 22px 0 0; padding: 0; list-style: none; }
+  .g-stats li { background: var(--surface); border-radius: 999px; padding: 8px 16px; font-weight: 800; font-size: 15px; }
+  .g-stats b { font-weight: 900; }
+
+  .g-bar { position: sticky; top: 64px; z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); padding: 14px 0; margin: 18px 0 8px;
+    display: flex; gap: 10px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+  .g-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+  .g-filters button { font: 800 14px var(--rounded); border: 0; cursor: pointer; padding: 9px 15px; border-radius: 999px;
+    background: var(--surface); color: var(--text); }
+  .g-filters button[aria-pressed="true"] { background: var(--text); color: var(--bg); }
+  .g-filters button .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 7px; vertical-align: 1px; }
+  .g-zip { font: 800 14px var(--rounded); border: 0; cursor: pointer; padding: 9px 15px; border-radius: 999px; background: var(--signal); color: var(--on-signal); }
+  .g-zip:disabled { opacity: .5; cursor: default; }
+
+  .g-grid { columns: 4 230px; column-gap: 16px; padding-top: 8px; }
+  .g-card { break-inside: avoid; margin: 0 0 18px; display: block; width: 100%; text-align: left; border: 0; padding: 0;
+    background: none; color: inherit; cursor: zoom-in; font: inherit; }
+  .g-frame { background: #fff; padding: 6px; border-radius: 24px; box-shadow: 0 14px 34px rgba(0,0,0,.13); transition: transform .2s ease; }
+  .g-card:nth-child(3n+1) .g-frame { transform: rotate(-1.2deg); }
+  .g-card:nth-child(3n+2) .g-frame { transform: rotate(.9deg); }
+  .g-card:hover .g-frame, .g-card:focus-visible .g-frame { transform: rotate(0) scale(1.02); }
+  .g-frame img { width: 100%; height: auto; border-radius: 19px; background: var(--surface); aspect-ratio: auto; }
+  .g-meta { padding: 10px 6px 0; }
+  .g-name { font-weight: 900; font-size: 17px; letter-spacing: -.01em; line-height: 1.2; }
+  .g-sci { font-family: var(--serif); font-style: italic; color: var(--muted); font-size: 15px; }
+  .g-by { color: var(--muted); font-size: 13px; font-weight: 700; margin-top: 2px; }
+  .g-tag { display: inline-block; font-size: 12px; font-weight: 800; padding: 3px 9px; border-radius: 999px; margin-top: 6px; }
+
+  [hidden] { display: none !important; }
+  .g-more { display: flex; justify-content: center; padding: 18px 0 0; }
+  .g-more .btn { color: var(--text); border: 0; cursor: pointer; font-family: var(--rounded); }
+  .g-empty { text-align: center; padding: 70px 20px; color: var(--muted); }
+  .g-empty h2 { color: var(--text); font-size: 30px; font-weight: 900; margin: 0 0 8px; }
+  .g-skel { break-inside: avoid; margin: 0 0 18px; border-radius: 24px; background: var(--surface); animation: pulse 1.4s ease-in-out infinite; }
+  @keyframes pulse { 50% { opacity: .55; } }
+
+  dialog.g-view { border: 0; padding: 0; background: transparent; max-width: min(980px, calc(100vw - 32px)); width: 100%; color: var(--text); }
+  dialog.g-view::backdrop { background: rgba(0,0,0,.78); backdrop-filter: blur(6px); }
+  .g-sheet { background: var(--bg); border-radius: 30px; overflow: hidden; display: grid; grid-template-columns: 1.35fr 1fr; }
+  .g-sheet .pic { background: #000; display: grid; place-items: center; min-height: 320px; }
+  .g-sheet .pic img { max-height: 78vh; width: 100%; object-fit: contain; }
+  .g-sheet .info { padding: 28px 26px; display: flex; flex-direction: column; gap: 10px; }
+  .g-sheet h2 { margin: 0; font-size: 30px; font-weight: 900; letter-spacing: -.02em; line-height: 1.05; }
+  .g-sheet .sci { font-family: var(--serif); font-style: italic; color: var(--muted); font-size: 19px; }
+  .g-sheet .facts { color: var(--muted); font-size: 15px; margin: 4px 0 6px; }
+  .g-sheet .actions { display: flex; flex-direction: column; gap: 10px; margin-top: auto; }
+  .g-sheet .btn { justify-content: center; font-size: 16px; padding: 14px 20px; }
+  .g-sheet .license { font-size: 13px; color: var(--muted); }
+  .g-sheet .license a { color: var(--muted); }
+  .g-close { position: absolute; top: 14px; right: 14px; width: 42px; height: 42px; border-radius: 50%; border: 0; cursor: pointer;
+    background: rgba(0,0,0,.55); color: #fff; font-size: 20px; font-weight: 900; }
+  .g-report { background: none; border: 0; color: var(--muted); font: 700 14px var(--rounded); cursor: pointer; text-decoration: underline; padding: 4px 0; align-self: flex-start; }
+  .g-report-form { display: none; gap: 8px; flex-direction: column; background: var(--surface); padding: 14px; border-radius: 18px; }
+  .g-report-form.open { display: flex; }
+  .g-report-form label { font-size: 15px; display: flex; gap: 8px; align-items: center; }
+  .g-report-form button { align-self: flex-start; font: 800 14px var(--rounded); border: 0; border-radius: 999px; padding: 9px 15px; cursor: pointer; background: var(--text); color: var(--bg); }
+  .g-toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: var(--text); color: var(--bg); padding: 12px 18px;
+    border-radius: 999px; font-weight: 800; font-size: 15px; opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 50; max-width: calc(100vw - 32px); text-align: center; }
+  .g-toast.show { opacity: 1; }
+  .g-how { margin-top: 56px; }
+
+  @media (max-width: 760px) {
+    .g-grid { columns: 2 150px; column-gap: 12px; }
+    .g-frame { padding: 5px; border-radius: 18px; } .g-frame img { border-radius: 14px; }
+    .g-name { font-size: 15px; } .g-sci { font-size: 13px; }
+    .g-sheet { grid-template-columns: 1fr; } .g-sheet .pic img { max-height: 44vh; }
+    .g-bar { position: static; padding: 6px 0; flex-wrap: nowrap; flex-direction: column; align-items: stretch; }
+    .g-filters { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -20px; padding: 2px 20px; }
+    .g-filters::-webkit-scrollbar { display: none; }
+    .g-filters button { flex: none; }
+    .g-zip { align-self: flex-start; }
+    dialog.g-view { max-height: calc(100vh - 32px); overflow: auto; }
+  }
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="../"><img src="../assets/icon-256.png?v=2" alt="">WildLens</a>
+  <nav><a href="./" aria-current="page">Gallery</a><a href="../privacy/">Privacy</a><a href="../support/" class="hide-sm">Support</a></nav>
+</div></header>
+
+<main class="wrap">
+  <section class="g-hero">
+    <h1>Found <mark>in the wild.</mark></h1>
+    <p>Plants, animals, insects and fungi spotted by WildLens explorers. Every photo is free to download and use, with credit.</p>
+    <ul class="g-stats" id="stats" aria-live="polite"></ul>
+  </section>
+
+  <div class="g-bar">
+    <div class="g-filters" role="group" aria-label="Show">
+      <button type="button" data-cat="" aria-pressed="true">All</button>
+      <button type="button" data-cat="plants" aria-pressed="false"><span class="dot" style="background:var(--plants)"></span>Plants</button>
+      <button type="button" data-cat="animals" aria-pressed="false"><span class="dot" style="background:var(--animals)"></span>Animals</button>
+      <button type="button" data-cat="insects" aria-pressed="false"><span class="dot" style="background:var(--insects)"></span>Insects</button>
+      <button type="button" data-cat="fungi" aria-pressed="false"><span class="dot" style="background:var(--fungi)"></span>Fungi</button>
+      <button type="button" data-cat="other" aria-pressed="false"><span class="dot" style="background:var(--other)"></span>Other</button>
+    </div>
+    <button type="button" class="g-zip" id="zip" disabled>Download all shown</button>
+  </div>
+
+  <div class="g-grid" id="grid" aria-busy="true"></div>
+  <div class="g-more"><button type="button" class="btn quiet" id="more" hidden>Show more</button></div>
+
+  <section class="g-how band">
+    <h2>How photos get here.</h2>
+    <p class="sub">Only from people who turn on “Show in the public gallery” in the app. Their location is never shown.</p>
+    <div class="grid">
+      <div class="tile"><div class="ic" style="background:var(--plants)">1</div><h3>Checked on the phone</h3><p>Photos with a face or a person in them stay private and never leave as gallery photos.</p></div>
+      <div class="tile"><div class="ic" style="background:var(--insects)">2</div><h3>Checked again</h3><p>An automatic check makes sure each photo is a living thing, with no people, text or anything unsuitable for kids. Anything unclear stays hidden.</p></div>
+      <div class="tile"><div class="ic" style="background:var(--fungi)">3</div><h3>Reported? Removed.</h3><p>Anyone can report a photo. It leaves the gallery straight away while it's looked at. People can delete their photos anytime.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <div><a href="./">Gallery</a><a href="../privacy/">Privacy</a><a href="../support/">Support</a><a href="../terms/">Terms</a></div>
+  <div>Photos © their finders, shared under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a> · © 2026 WildLens</div>
+</div></footer>
+
+<dialog class="g-view" id="view" aria-labelledby="v-name">
+  <div class="g-sheet">
+    <div class="pic"><img id="v-img" alt=""></div>
+    <div class="info">
+      <h2 id="v-name"></h2>
+      <div class="sci" id="v-sci"></div>
+      <div class="facts" id="v-facts"></div>
+      <div class="actions">
+        <a class="btn primary" id="v-download" href="#" download>Download photo</a>
+        <div class="license" id="v-license"></div>
+        <button type="button" class="g-report" id="v-report">Report this photo</button>
+        <form class="g-report-form" id="v-report-form">
+          <label><input type="radio" name="reason" value="person" required> Shows a person</label>
+          <label><input type="radio" name="reason" value="inappropriate"> Inappropriate</label>
+          <label><input type="radio" name="reason" value="not nature"> Not a living thing</label>
+          <label><input type="radio" name="reason" value="wrong name"> Wrong name</label>
+          <button type="submit">Send report</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="g-close" id="v-close" aria-label="Close">✕</button>
+</dialog>
+<div class="g-toast" id="toast" role="status"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" defer></script>
+<script>
+(() => {
+  const API = "https://wildlens-proxy.ticker-proxy.workers.dev/v1/gallery";
+  const PAGE = 30;
+  const LABEL = { plants: "Plant", animals: "Animal", insects: "Insect", fungi: "Fungus", other: "Other" };
+  const VERDICT = { native: "Native where found", introduced: "Introduced where found", invasive: "Invasive where found" };
+  const $ = (id) => document.getElementById(id);
+  const grid = $("grid"), more = $("more"), zip = $("zip"), view = $("view"), toast = $("toast");
+  let category = "", items = [], cursor = null, loading = false, current = null, generation = 0;
+
+  const photoURL = (it, download) => `${API}/photo/${it.id}.jpg` + (download ? `?download=1&name=${encodeURIComponent(it.common_name || it.scientific_name)}` : "");
+  const month = (ym) => { if (!ym) return ""; const [y, m] = ym.split("-").map(Number); return new Date(Date.UTC(y, m - 1, 15)).toLocaleDateString(undefined, { month: "long", year: "numeric", timeZone: "UTC" }); };
+  const credit = (it) => `${it.common_name || it.scientific_name} by ${it.by}, via WildLens. CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)`;
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  function say(text) { toast.textContent = text; toast.classList.add("show"); clearTimeout(say.t); say.t = setTimeout(() => toast.classList.remove("show"), 2600); }
+
+  async function loadStats() {
+    try {
+      const s = await (await fetch(`${API}/stats`)).json();
+      const ul = $("stats"); ul.replaceChildren();
+      const add = (n, word) => { const li = el("li"); li.append(el("b", null, n.toLocaleString()), ` ${word}`); ul.append(li); };
+      add(s.photos || 0, s.photos === 1 ? "photo" : "photos");
+      add(s.species || 0, s.species === 1 ? "species" : "species");
+    } catch {}
+  }
+
+  function skeletons() {
+    grid.replaceChildren();
+    for (let i = 0; i < 8; i++) { const d = el("div", "g-skel"); d.style.height = `${180 + (i * 53) % 140}px`; grid.append(d); }
+  }
+
+  function card(it) {
+    const b = el("button", "g-card"); b.type = "button"; b.dataset.id = it.id;
+    b.setAttribute("aria-label", `${it.common_name || it.scientific_name}, by ${it.by}`);
+    const f = el("div", "g-frame"); const img = el("img"); img.loading = "lazy"; img.decoding = "async"; img.alt = it.common_name || it.scientific_name;
+    img.src = photoURL(it); f.append(img);
+    const m = el("div", "g-meta");
+    m.append(el("div", "g-name", it.common_name || it.scientific_name));
+    if (it.common_name && it.scientific_name !== it.common_name) m.append(el("div", "g-sci", it.scientific_name));
+    m.append(el("div", "g-by", `${it.by} · ${month(it.observed)}`));
+    const color = `var(--${LABEL[it.category] ? it.category : "other"})`;
+    const tag = el("span", "g-tag", LABEL[it.category] || "Other");
+    tag.style.background = `color-mix(in srgb, ${color} 18%, transparent)`; tag.style.color = color; m.append(tag);
+    b.append(f, m);
+    b.addEventListener("click", () => open(it));
+    return b;
+  }
+
+  async function load(reset) {
+    if (loading && !reset) return;
+    const mine = reset ? ++generation : generation;
+    loading = true; more.hidden = true;
+    if (reset) { items = []; cursor = null; skeletons(); }
+    grid.setAttribute("aria-busy", "true");
+    const q = new URLSearchParams({ limit: PAGE });
+    if (cursor) q.set("before", cursor);
+    if (category) q.set("category", category);
+    try {
+      const res = await fetch(`${API}?${q}`);
+      if (!res.ok) throw new Error(res.status);
+      const page = await res.json();
+      if (mine !== generation) return;
+      if (reset) grid.replaceChildren();
+      items.push(...page);
+      for (const it of page) grid.append(card(it));
+      cursor = page.length ? page[page.length - 1].shared_at : cursor;
+      more.hidden = page.length < PAGE;
+      if (!items.length) {
+        const e = el("div", "g-empty"); e.style.columnSpan = "all";
+        e.append(el("h2", null, category ? `No ${LABEL[category].toLowerCase()} finds yet.` : "No finds yet."),
+                 el("p", null, "Turn on “Show in the public gallery” in WildLens and yours could be first."));
+        grid.append(e);
+      }
+    } catch {
+      if (mine !== generation) return;
+      if (reset) grid.replaceChildren();
+      const e = el("div", "g-empty"); e.style.columnSpan = "all";
+      e.append(el("h2", null, "Couldn't load the gallery."), el("p", null, "Check your connection and try again."));
+      grid.append(e);
+    } finally {
+      if (mine === generation) { loading = false; grid.setAttribute("aria-busy", "false"); zip.disabled = !items.length; }
+    }
+  }
+
+  function open(it) {
+    current = it;
+    $("v-img").src = photoURL(it); $("v-img").alt = it.common_name || it.scientific_name;
+    $("v-name").textContent = it.common_name || it.scientific_name;
+    $("v-sci").textContent = it.common_name && it.common_name !== it.scientific_name ? it.scientific_name : "";
+    $("v-facts").textContent = [`Found by ${it.by}`, month(it.observed), VERDICT[it.range_verdict]].filter(Boolean).join(" · ");
+    $("v-download").href = photoURL(it, true);
+    const lic = $("v-license"); lic.replaceChildren("Free to use with credit: ", el("em", null, credit(it)));
+    $("v-report-form").classList.remove("open"); $("v-report-form").reset(); $("v-report").hidden = false;
+    view.showModal();
+  }
+
+  $("v-close").addEventListener("click", () => view.close());
+  view.addEventListener("click", (e) => { if (e.target === view) view.close(); });
+  $("v-report").addEventListener("click", () => { $("v-report-form").classList.add("open"); $("v-report").hidden = true; });
+  $("v-report-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const reason = new FormData(e.target).get("reason");
+    const it = current;
+    try {
+      const res = await fetch(`${API}/report`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: it.id, reason }) });
+      if (res.status === 429) { say("That's a lot of reports today. Try again tomorrow."); return; }
+      if (!res.ok) throw new Error(res.status);
+      view.close();
+      items = items.filter((x) => x.id !== it.id);
+      grid.querySelector(`[data-id="${it.id}"]`)?.remove();
+      say("Thanks. The photo is hidden while we look at it.");
+    } catch { say("Couldn't send the report. Try again."); }
+  });
+
+  document.querySelectorAll(".g-filters button").forEach((b) => b.addEventListener("click", () => {
+    document.querySelectorAll(".g-filters button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    category = b.dataset.cat; load(true);
+  }));
+  more.addEventListener("click", () => load(false));
+
+  zip.addEventListener("click", async () => {
+    if (!window.JSZip || !items.length) return;
+    zip.disabled = true;
+    const z = new JSZip(), credits = [], used = new Set();
+    let done = 0;
+    for (const it of items) {
+      zip.textContent = `Preparing ${++done} of ${items.length}…`;
+      try {
+        const blob = await (await fetch(photoURL(it))).blob();
+        let base = (it.common_name || it.scientific_name).replace(/[^A-Za-z0-9 _-]/g, "").trim().replace(/\s+/g, "-") || "wildlens";
+        let name = `${base}-${it.id.slice(0, 8)}.jpg`;
+        if (used.has(name)) continue; used.add(name);
+        z.file(name, blob); credits.push(`${name}: ${credit(it)}`);
+      } catch {}
+    }
+    z.file("CREDITS.txt", "Photos from the WildLens gallery (https://callan-watkins.github.io/wildlens/gallery/).\nUse them freely under CC BY 4.0: give credit as shown.\n\n" + credits.join("\n") + "\n");
+    const out = await z.generateAsync({ type: "blob" });
+    const a = el("a"); a.href = URL.createObjectURL(out); a.download = "wildlens-gallery.zip"; document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    zip.textContent = "Download all shown"; zip.disabled = false;
+  });
+
+  loadStats(); load(true);
+})();
+</script>
+</body>
+</html>

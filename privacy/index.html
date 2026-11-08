@@ -12,12 +12,12 @@
 <body>
 <header class="nav"><div class="wrap">
   <a class="brand" href="../"><img src="../assets/icon-256.png?v=2" alt="">WildLens</a>
-  <nav><a href="../privacy/" aria-current="page">Privacy</a><a href="../support/">Support</a><a class="hide-sm" href="../terms/">Terms</a></nav>
+  <nav><a href="../gallery/">Gallery</a><a href="../privacy/" aria-current="page">Privacy</a><a href="../support/">Support</a><a class="hide-sm" href="../terms/">Terms</a></nav>
 </div></header>
 
 <main class="doc">
   <h1>Privacy Policy</h1>
-  <p class="meta">Effective October 23, 2026</p>
+  <p class="meta">Effective November 8, 2026</p>
 
   <div class="summary">
     <strong>The short version</strong>
@@ -55,6 +55,10 @@
   <p>We use it to see where identification works and where it doesn't, to improve WildLens (including training and testing identification models), and to understand which species people find. It's stored with Supabase, our database provider, and isn't sold or used for advertising.</p>
   <h3>Also help researchers</h3>
   <p>If you also turn on <em>Also help researchers</em>, your shared finds (species, date, rounded location and your name if you gave one; not your photo) may be included in biodiversity datasets for scientists and conservation groups, such as GBIF. These records may become public and are hard to withdraw once published elsewhere.</p>
+  <h3>Show in the public gallery</h3>
+  <p>This is a separate switch, off unless you turn it on (it needs <em>Help improve WildLens</em>). When it's on, the photos of finds you add afterwards can appear in the <a href="../gallery/">WildLens gallery</a>, where anyone can see and download them under the <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> licence, credited to your name if you gave one (otherwise “A WildLens explorer”). The gallery shows the photo, the species, the month it was found and the Range Check result. <strong>It never shows where you were</strong>, and the photo carries no location or camera data.</p>
+  <p>Before a photo can appear, your iPhone checks it for faces and people and keeps any such photo out of the gallery. Then the WildLens server has an automatic image check (Cloudflare Workers AI) confirm it shows a living thing with no people, readable personal information or anything unsuitable for children. Anything that fails or can't be checked stays hidden. Anyone can report a gallery photo; it's hidden right away until we review it.</p>
+  <p>Turning the switch off takes all your photos out of the gallery. Deleting a find from your collection also deletes it from our database and the gallery. Copies people downloaded while it was public can't be recalled, so only share photos you're happy for anyone to keep.</p>
   <h3>Deleting what you shared</h3>
   <p>In Settings, tap <strong>Delete my shared data</strong>. Everything you shared is erased from our database right away and sharing turns off. Your collection on your iPhone isn't affected. Deleting the app without doing this leaves shared finds in place; contact us (below) and we'll remove them.</p>
 
@@ -74,10 +78,10 @@
   </ul>
 
   <h2>Service providers</h2>
-  <p>Cloudflare (hosts the WildLens server and the identifier download), Supabase (stores shared finds), Pl@ntNet, iNaturalist, GBIF, the IUCN Red List and Tavily (as described above), and Apple (Maps, location and on-device Apple Intelligence). Each handles data under its own privacy policy.</p>
+  <p>Cloudflare (hosts the WildLens server and the identifier download, and runs the gallery photo check), Supabase (stores shared finds), Pl@ntNet, iNaturalist, GBIF, the IUCN Red List and Tavily (as described above), and Apple (Maps, location and on-device Apple Intelligence). Each handles data under its own privacy policy.</p>
 
   <h2>Children</h2>
-  <p>WildLens is suitable for all ages and doesn't knowingly collect personal information from children. We suggest children leave <em>Help improve WildLens</em> off, or use it with a parent. If you believe a child has shared finds, contact us and we'll delete them.</p>
+  <p>WildLens is suitable for all ages and doesn't knowingly collect personal information from children. We suggest children leave <em>Help improve WildLens</em> and <em>Show in the public gallery</em> off, or use them with a parent. If you believe a child has shared finds, contact us and we'll delete them.</p>
 
   <h2>Retention</h2>
   <p>Shared finds are kept until you delete them or we no longer need them to improve WildLens. Cached lookups on the WildLens server expire within 30 days. Usage counters expire within days.</p>

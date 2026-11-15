@@ -7,67 +7,137 @@
 <meta name="description" content="Point your iPhone at a plant, bug, bird or mushroom. WildLens tells you what it is, whether it belongs where you are, and if it's at risk. Free, private, works offline.">
 <meta property="og:title" content="WildLens: snap something wild">
 <meta property="og:description" content="Identify plants, animals, insects and fungi, and find out if they belong here. Free, private, offline.">
-<meta property="og:image" content="assets/shots/01.jpg">
+<meta property="og:image" content="https://callan-watkins.github.io/wildlens/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#c6f24a">
 <link rel="icon" href="assets/favicon.png?v=2">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=2">
-<link rel="stylesheet" href="assets/site.css?v=3">
+<link rel="stylesheet" href="assets/site.css?v=4">
+<link rel="stylesheet" href="assets/home.css?v=1">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <header class="nav"><div class="wrap">
   <a class="brand" href="./"><img src="assets/icon-256.png?v=2" alt="">WildLens</a>
-  <nav><a href="#features" class="hide-sm">Features</a><a href="gallery/">Gallery</a><a href="privacy/">Privacy</a><a href="support/">Support</a></nav>
+  <nav><a href="#how" class="hide-sm">How it works</a><a href="gallery/">Gallery</a><a href="privacy/">Privacy</a><a href="support/">Support</a></nav>
 </div></header>
 
 <main class="wrap">
-  <section class="hero">
+  <section class="hero2">
     <div>
-      <h1>Snap something <mark>wild.</mark></h1>
-      <p class="lead">Plants, bugs, birds, mushrooms. Find out what it is, if it belongs here, and if it's at risk.</p>
-      <div class="cta">
+      <p class="kicker rv"><b>New</b> A fresh look in version 2.1</p>
+      <h1 class="rv" style="--d:.05s">Snap something <mark>wild.</mark></h1>
+      <p class="lead rv" style="--d:.1s">Plants, bugs, birds, mushrooms. Find out what it is, if it belongs here, and if it's at risk.</p>
+      <div class="cta rv" style="--d:.15s">
         <a class="btn primary" href="#download"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.5 7.7 1.3 10.2.8 1.2 1.8 2.6 3.1 2.6 1.2-.1 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.8 1.3-2.8s-2.3-1-2.3-4.3zM14 5.1c.7-.8 1.1-1.9 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/></svg>Coming to the App Store</a>
-        <a class="btn quiet" href="#features">See how it works</a>
+        <a class="btn quiet" href="#how">See how it works</a>
       </div>
-      <p class="note">Free. No ads, no account, no tracking.</p>
-      <ul class="chips">
-        <li style="background:color-mix(in srgb,var(--plants) 18%,transparent);color:var(--plants)">Plants</li>
-        <li style="background:color-mix(in srgb,var(--animals) 18%,transparent);color:var(--animals)">Animals</li>
-        <li style="background:color-mix(in srgb,var(--insects) 18%,transparent);color:var(--insects)">Insects</li>
-        <li style="background:color-mix(in srgb,var(--fungi) 18%,transparent);color:var(--fungi)">Fungi</li>
-      </ul>
+      <p class="note rv" style="--d:.2s">Free. No ads, no account, no tracking.</p>
     </div>
-    <div class="stickers" aria-hidden="true">
-      <div class="sticker s2"><img src="assets/shots/02.jpg" alt=""></div>
-      <div class="sticker s1"><img src="assets/shots/01.jpg" alt=""></div>
-      <div class="sticker s3"><img src="assets/shots/04.jpg" alt=""></div>
+    <div class="stage rv" style="--d:.15s">
+      <div class="float a" aria-hidden="true"><img src="assets/photos/robin.jpg" alt=""></div>
+      <div class="float b" aria-hidden="true"><img src="assets/photos/poppy.jpg" alt=""></div>
+      <div class="float c" aria-hidden="true"><img src="assets/photos/monarch.jpg" alt=""></div>
+      <div class="tag" aria-hidden="true">✓ American Robin</div>
+      <div class="phone"><div class="screen"><img src="assets/screens/home.jpg" alt="The WildLens home screen: Good evening, Maya. Snap something wild." width="660" height="1434"></div></div>
+    </div>
+  </section>
+
+  <ul class="stats">
+    <li class="rv"><b>16,800</b><span>species it knows</span></li>
+    <li class="rv" style="--d:.06s"><b>~1 sec</b><span>to name what you found</span></li>
+    <li class="rv" style="--d:.12s"><b>9</b><span>languages</span></li>
+    <li class="rv" style="--d:.18s"><b>0</b><span>accounts, ads or trackers</span></li>
+  </ul>
+
+  <section class="band" id="how">
+    <h2 class="rv">Three taps to a field guide.</h2>
+    <p class="sub rv">No setup and nothing to learn. Open it and point.</p>
+    <div class="steps">
+      <div class="step rv"><h3>Snap it</h3><p>Take a photo or pick one from your library. Location data is stripped before anything else happens.</p>
+        <div class="phone"><div class="screen"><img src="assets/screens/scan.jpg" alt="Scanning a photo of an American robin" loading="lazy" width="660" height="1434"></div></div></div>
+      <div class="step rv" style="--d:.08s"><h3>Name it</h3><p>WildLens locks on and shows the name, how sure it is, and a short guide to what you found.</p>
+        <div class="phone"><div class="screen"><img src="assets/screens/fox.jpg" alt="A red fox identified with a confidence badge" loading="lazy" width="660" height="1434"></div></div></div>
+      <div class="step rv" style="--d:.16s"><h3>Collect it</h3><p>Every find becomes a numbered card in your collection, with badges to earn along the way.</p>
+        <div class="phone"><div class="screen"><img src="assets/screens/collection.jpg" alt="A collection of seven numbered finds" loading="lazy" width="660" height="1434"></div></div></div>
     </div>
   </section>
 
   <section class="band" id="features">
-    <h2>More than a name.</h2>
-    <p class="sub">Every find becomes a little field guide, built from real scientific sources, with the photo you took on top.</p>
-    <div class="grid">
-      <div class="tile"><div class="ic" style="background:var(--plants)">✓</div><h3>Does it belong here?</h3><p>Range Check tells you if it's native, introduced, invasive or rarely recorded where you are, with a map of nearby records.</p></div>
-      <div class="tile"><div class="ic" style="background:var(--fungi)">!</div><h3>Is it at risk?</h3><p>Conservation status from the IUCN Red List, global and regional, kept separate and always sourced.</p></div>
-      <div class="tile"><div class="ic" style="background:var(--insects)">✦</div><h3>Ask about it</h3><p>On supported iPhones, Apple Intelligence answers your questions with cited web sources. Fun facts are always labeled as from the web.</p></div>
+    <h2 class="rv">More than a name.</h2>
+    <p class="sub rv">Each find comes with answers built from real scientific sources. Tap through to see them.</p>
+    <div class="show rv">
+      <div>
+        <div class="tabs" role="tablist" aria-label="App features">
+          <button role="tab" aria-selected="true" data-cap="Native, introduced or invasive where you are, with a map of real records nearby.">
+            <span class="ic" style="background:var(--plants)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.900 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+            <strong>Does it belong here?</strong><span class="d">Native, introduced or invasive where you are, with a map of real records nearby.</span></button>
+          <button role="tab" aria-selected="false" data-cap="Conservation status from the IUCN Red List, global and regional, always with its source.">
+            <span class="ic" style="background:var(--fungi)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17v.01"/></svg></span>
+            <strong>Is it at risk?</strong><span class="d">Conservation status from the IUCN Red List, global and regional, always with its source.</span></button>
+          <button role="tab" aria-selected="false" data-cap="See what's been recorded near you this month, and tick species off as you find them.">
+            <span class="ic" style="background:var(--animals)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="15" r="4"/><circle cx="17" cy="15" r="4"/><path d="M11 15h2M7 11l2-6h6l2 6"/></svg></span>
+            <strong>What's around you?</strong><span class="d">See what's been recorded near you this month, and tick species off as you find them.</span></button>
+          <button role="tab" aria-selected="false" data-cap="Fun facts from the web, each one labeled and linked to where it came from.">
+            <span class="ic" style="background:var(--insects)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.200 5.600L20 9.300l-4.500 3.900L17 19l-5-3.100L7 19l1.500-5.800L4 9.300l5.800-.7z"/></svg></span>
+            <strong>Go down the rabbit hole</strong><span class="d">Fun facts from the web, each one labeled and linked to where it came from.</span></button>
+        </div>
+        <div class="bar" aria-hidden="true"><i></i></div>
+      </div>
+      <div class="phone"><div class="screen">
+        <img class="on" src="assets/screens/range.jpg" alt="Range check: native here, with a map of nearby records" loading="lazy" width="660" height="1434">
+        <img src="assets/screens/risk.jpg" alt="Conservation: endangered on the IUCN Red List" loading="lazy" width="660" height="1434">
+        <img src="assets/screens/area.jpg" alt="Around you: species recorded nearby this month" loading="lazy" width="660" height="1434">
+        <img src="assets/screens/facts.jpg" alt="About the monarch butterfly, with fun facts from the web" loading="lazy" width="660" height="1434">
+      </div></div>
+      <p class="caption" aria-live="polite">Native, introduced or invasive where you are, with a map of real records nearby.</p>
     </div>
   </section>
 
   <section class="band">
-    <h2>See it in action.</h2>
-    <p class="sub">Real screens from the app.</p>
-    <div class="shots">
-      <img src="assets/shots/01.jpg" alt="Snap it, know it: an American robin identified on the spot" loading="lazy">
-      <img src="assets/shots/02.jpg" alt="Does it belong here? Native here, with a map of nearby records" loading="lazy">
-      <img src="assets/shots/03.jpg" alt="Not just plants: a red fox identified" loading="lazy">
-      <img src="assets/shots/04.jpg" alt="Is it at risk? Endangered on the IUCN Red List" loading="lazy">
-      <img src="assets/shots/05.jpg" alt="Fun facts from the web, each linked to its source" loading="lazy">
-      <img src="assets/shots/06.jpg" alt="Your collection of numbered finds" loading="lazy">
-      <img src="assets/shots/07.jpg" alt="Unlimited, offline and private on your iPhone" loading="lazy">
+    <h2 class="rv">Watch it work.</h2>
+    <p class="sub rv">Thirty seconds of the real app.</p>
+    <div class="trailer rv">
+      <video controls playsinline preload="none" poster="assets/video/trailer-poster.jpg">
+        <source src="assets/video/trailer.mp4" type="video/mp4">
+      </video>
     </div>
   </section>
 
   <section class="band">
-    <div class="dark-band">
+    <h2 class="rv">Every screen, up close.</h2>
+    <p class="sub rv">Real screens from version 2.1.</p>
+    <div class="shots2 rv">
+      <div class="rail" tabindex="0" aria-label="App screenshots">
+        <img src="assets/shots/01.jpg" alt="Snap it, know it: an American robin identified on the spot" loading="lazy" width="660" height="1434">
+        <img src="assets/shots/02.jpg" alt="A fresh new look: the home screen greets you by name" loading="lazy" width="660" height="1434">
+        <img src="assets/shots/03.jpg" alt="Does it belong here? Native here, with a map of nearby records" loading="lazy" width="660" height="1434">
+        <img src="assets/shots/04.jpg" alt="Is it at risk? Endangered on the IUCN Red List" loading="lazy" width="660" height="1434">
+        <img src="assets/shots/05.jpg" alt="What's around you? Species recorded near you this month" loading="lazy" width="660" height="1434">
+        <img src="assets/shots/06.jpg" alt="Collect the wild: numbered cards and badges" loading="lazy" width="660" height="1434">
+        <img src="assets/shots/07.jpg" alt="Not just plants: a red fox identified" loading="lazy" width="660" height="1434">
+        <img src="assets/shots/08.jpg" alt="Fun facts from the web, each linked to its source" loading="lazy" width="660" height="1434">
+      </div>
+      <div class="arrows"><button type="button" data-dir="-1" aria-label="Previous screenshots">‹</button><button type="button" data-dir="1" aria-label="More screenshots">›</button></div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="gteaser rv">
+      <div>
+        <h2>See what people are finding.</h2>
+        <p>Explorers can choose to share finds to a public gallery. Every photo is checked first and free to download.</p>
+        <a class="btn primary" href="gallery/">Open the gallery</a>
+      </div>
+      <div class="mosaic" aria-hidden="true">
+        <img src="assets/photos/hummingbird.jpg" alt="" loading="lazy"><img src="assets/photos/fly-agaric.jpg" alt="" loading="lazy"><img src="assets/photos/ladybug.jpg" alt="" loading="lazy">
+        <img src="assets/photos/redwood.jpg" alt="" loading="lazy"><img src="assets/photos/red-fox.jpg" alt="" loading="lazy"><img src="assets/photos/dragonfly.jpg" alt="" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="dark-band rv">
       <h2>Private by design.</h2>
       <p class="sub">Download the on-device identifier once and your photos are identified right on your iPhone: 16,800 species, offline, with no limit.</p>
       <div class="grid">
@@ -78,10 +148,22 @@
     </div>
   </section>
 
+  <section class="band">
+    <h2 class="rv">Good questions.</h2>
+    <p class="sub rv">The short answers. There's more on the <a href="support/">support page</a>.</p>
+    <details class="rv"><summary>Is it really free?</summary><p>Yes. There are no ads, no subscription and nothing to unlock.</p></details>
+    <details class="rv"><summary>Does it work without signal?</summary><p>Yes, once you've downloaded the on-device identifier. Names work offline; range maps and fun facts need a connection.</p></details>
+    <details class="rv"><summary>Who decides what the species is?</summary><p>An image model picks the name. Whether it's native or at risk comes from iNaturalist, GBIF and the IUCN Red List, never from a chatbot's guess.</p></details>
+    <details class="rv"><summary>What happens to my photos?</summary><p>They stay on your iPhone unless you choose to share a find. Read the details in the <a href="privacy/">privacy policy</a>.</p></details>
+  </section>
+
   <section class="band" id="download">
-    <h2>Go find something wild.</h2>
-    <p class="sub">WildLens is coming soon to the App Store for iPhone.</p>
-    <a class="btn primary" href="support/">Questions? Get support</a>
+    <div class="final rv">
+      <img src="assets/icon-256.png?v=2" alt="" width="96" height="96">
+      <h2>Go find something wild.</h2>
+      <p>WildLens is coming soon to the App Store for iPhone.</p>
+      <a class="btn" href="support/">Questions? Get support</a>
+    </div>
   </section>
 </main>
 
@@ -89,5 +171,57 @@
   <div><a href="gallery/">Gallery</a><a href="privacy/">Privacy</a><a href="support/">Support</a><a href="terms/">Terms</a></div>
   <div>Species data from iNaturalist, GBIF and the IUCN Red List · © 2026 WildLens</div>
 </div></footer>
+
+<script>
+(function () {
+  var calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Reveal sections as they scroll into view.
+  var items = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window && !calm) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    items.forEach(function (el) { io.observe(el); });
+  } else {
+    items.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  // Feature showcase: tabs swap the phone screen and rotate on their own until touched.
+  var show = document.querySelector('.show');
+  if (show) {
+    var tabs = [].slice.call(show.querySelectorAll('[role=tab]'));
+    var shots = show.querySelectorAll('.phone img');
+    var caption = show.querySelector('.caption');
+    var bar = show.querySelector('.bar');
+    var current = 0, timer = null, visible = false;
+    function pick(i) {
+      current = i;
+      tabs.forEach(function (t, n) { t.setAttribute('aria-selected', n === i); });
+      shots.forEach(function (s, n) { s.classList.toggle('on', n === i); });
+      caption.textContent = tabs[i].dataset.cap;
+    }
+    function tick() {
+      bar.classList.remove('run'); void bar.offsetWidth; bar.classList.add('run');
+      timer = setTimeout(function () { pick((current + 1) % tabs.length); tick(); }, 5000);
+    }
+    function stop() { clearTimeout(timer); timer = null; bar.classList.remove('run'); }
+    tabs.forEach(function (t, i) { t.addEventListener('click', function () { stop(); visible = null; pick(i); }); });
+    if (!calm && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        if (visible === null) return;
+        visible = entries[0].isIntersecting;
+        if (visible && !timer) tick(); else if (!visible) stop();
+      }, { threshold: .4 }).observe(show);
+    }
+  }
+
+  // Screenshot rail arrows.
+  var rail = document.querySelector('.shots2 .rail');
+  [].forEach.call(document.querySelectorAll('.shots2 button'), function (b) {
+    b.addEventListener('click', function () { rail.scrollBy({ left: b.dataset.dir * 532, behavior: calm ? 'auto' : 'smooth' }); });
+  });
+})();
+</script>
 </body>
 </html>
